@@ -9,7 +9,7 @@ const LoginPage = () => {
     const passwordL = useRef()
     const passwordR1 = useRef()
     const passwordR2 = useRef()
-    const [error, setError] = useState('Identify yourself!')
+    const [error, setError] = useState('Please register or login')
 
     function loginBtn(){
         const user = {
@@ -35,7 +35,7 @@ const LoginPage = () => {
         })
     }
     function register(){
-        if (passwordR1.current.value!==passwordR2.current.value) return setError('passwords dont match')
+        if (passwordR1.current.value!==passwordR2.current.value) return setError("Passwords doesn't match")
         const user = {
             username: usernameR.current.value,
             password: passwordR1.current.value
@@ -55,18 +55,18 @@ const LoginPage = () => {
     }
         
         return (
-        <div className='LoginPage'>
+        <div className='frontPage'>
             <div className='login'>
-                login
-                <input onKeyDown={e=>e.key==='Enter' && loginBtn()} ref={usernameL} type='text' autoFocus placeholder='username' defaultValue='Petras'/>
-                <input ref={passwordL} type='text' placeholder='password' defaultValue='petras'/>
+                Login:
+                <input onKeyDown={e=>e.key==='Enter' && loginBtn()} ref={usernameL} type='text' autoFocus placeholder='username' defaultValue='Marius'/>
+                <input ref={passwordL} type='text' placeholder='password' defaultValue='marius'/>
                 <button onClick={loginBtn} >Login</button>
             </div><br/>
             <div className='register'>
-                register
-                <input ref={usernameR} type='text' placeholder='username'/>
-                <input ref={passwordR1} type='text' placeholder='password'/>
-                <input ref={passwordR2} type='text' placeholder='password'/>
+                Register:
+                <input ref={usernameR} type='text' placeholder='Username'/>
+                <input ref={passwordR1} type='text' placeholder='Password'/>
+                <input ref={passwordR2} type='text' placeholder='Repeat password'/>
                 <button onClick={register}>Register</button>
             </div>
             <h1>{error}</h1>

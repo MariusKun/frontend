@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useContext, useState, useEffect } from 'react';
 import mainContext from '../context/mainContext';
-const NavBar = () => {
+const Navigation = () => {
     const [requests, setRequests] = useState(0)
     const { login, setLogin, setUser, socket, user } = useContext(mainContext)
     const nav = useNavigate();
@@ -10,7 +10,7 @@ const NavBar = () => {
         socket.on('requestStatus', data => {
             setRequests(data)
         });
-        socket.on('alert', data => alert(data))
+        
     }, [user])
     useEffect(()=>{
         const options = {
@@ -41,17 +41,17 @@ const NavBar = () => {
         })
     }
     return (
-        <div className='NavBar'>
-            {login ? <h1 onClick={logout}>Logout</h1> : <h1 onClick={()=>nav('/')}>Login</h1>}
+        <div className='Navigation'>
             {login && 
                 <>
-                    <h1 onClick={()=>nav('/profile')}>Profile</h1>
-                    <h1 onClick={()=>nav('/users')}>Users</h1>
-                    <h1 onClick={()=>nav('/upload')}>Upload</h1>
-                    <h1 onClick={()=>nav('/requests')}>Requests({requests})</h1>
+                    <h2 onClick={()=>nav('/profile')}>Profile</h2>
+                    <h2 onClick={()=>nav('/upload')}>Upload</h2>
+                    <h2 onClick={()=>nav('/users')}>Users</h2>
+                    <h2 onClick={()=>nav('/requests')}>Requests({requests})</h2>
                 </>}
+                {login ? <h3 onClick={logout}>Sign out</h3> : <h3 onClick={()=>nav('/')}>Login</h3>}
         </div>
     );
 };
 
-export default NavBar;
+export default Navigation;

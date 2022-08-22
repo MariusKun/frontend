@@ -16,12 +16,13 @@ const UsersPage = () => {
             setUsers(data.users)
         })
     }, [])
+    
     return (
         <div className='UsersPage'>
+            <h2>Press on user to make an offer!</h2>
             {users.map((user, i) => 
-                <div onClick={()=>nav(`/user/${user._id}`)} key={i} className='userCard'>
-                    <h5>id: {user._id}</h5>
-                    <h5>name: {user.username}</h5>
+                <div onClick={()=>nav(`/user/${user._id}`)} key={i} className='userText'>
+                    <h3>Nick name: {user.username}</h3>
                 </div>
             )}
         </div>

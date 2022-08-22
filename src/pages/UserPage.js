@@ -4,11 +4,11 @@ import mainContext from '../context/mainContext';
 
 const UserPage = () => {
     const { id } = useParams()
-    const [error, setError] = useState('make an offer')
+    const [error, setError] = useState('Submit offer')
     const [openUser, setOpenUser] = useState({})
-    const [nfts, setNFTS] = useState([])
+    const [images, setimages] = useState([])
     const [offer, setOffer] = useState({youget:[], iget:[]})
-    const { user, myNFTS, socket } = useContext(mainContext)
+    const { user, myImages, socket } = useContext(mainContext)
     useEffect(()=>{
         const options = {
             method: 'GET',
@@ -19,20 +19,20 @@ const UserPage = () => {
         .then(res => res.json())
         .then(data => {
             setOpenUser(data.user)
-            setNFTS(data.nfts)
+            setimages(data.images)
         })
     })
     function addToIGet(id){
-        const item = nfts.find(x=>x._id===id)
+        const item = images.find(x=>x._id===id)
         let newOffer = offer;
-        if (newOffer.iget.find(x=>x._id===id)) console.log('item already added')
+        if (newOffer.iget.find(x=>x._id===id)) console.log('You allready offered this image')
         else newOffer.iget.push(item)
         setOffer(newOffer)
     }
     function addToYouGet(id){
-        const item = myNFTS.find(x=>x._id===id)
+        const item = myImages.find(x=>x._id===id)
         let newOffer = offer;
-        if (newOffer.youget.find(x=>x._id===id)) console.log('item already added')
+        if (newOffer.youget.find(x=>x._id===id)) console.log('You allready offered this image')
         else newOffer.youget.push(item)
         setOffer(newOffer)
     }
@@ -70,40 +70,52 @@ const UserPage = () => {
             <div className='top'>
                 <div className='UserInfo'>
                     <div className='info'>
-                        <h5>id: {openUser._id}</h5>
-                        <h5>username: {openUser.username}</h5>
+                        {/* <h5>id: {openUser._id}</h5> */}
+                        <h5>User: {openUser.username}</h5>
                     </div>
-                    <div className='nftList'>
-                        {nfts.length > 0 && nfts.map((nft, i) =>
-                            <div onClick={()=>addToIGet(nft._id)} key={i} className='nft' style={{backgroundImage:`url(${nft.image})`, width: '100px', height: '100px', backgroundSize: 'cover', backgroundPosition:'center'}}></div>
+                    <div className='myImageList'>
+                        {images && images.map((image, i) =>
+                        {  
+
+                            return <div onClick={()=>addToIGet(image._id)} key={i} className='imageCard' style={{backgroundImage:`url(${image.image})`}}></div>
+                        }
                         )}
                     </div>
                 </div>
                 <div className='MySide'>
                     <div className='info'>
-                        <h5>id: {user._id}</h5>
-                        <h5>username: {user.username}</h5>
+                        {/* <h5>id: {user._id}</h5> */}
+                        <h5>User: {user.username}</h5>
                     </div>
-                    <div className='nftList'>
-                        {myNFTS.length > 0 && myNFTS.map((nft, i) =>
-                            <div onClick={()=>addToYouGet(nft._id)} key={i} className='nft' style={{backgroundImage:`url(${nft.image})`, width: '100px', height: '100px', backgroundSize: 'cover', backgroundPosition:'center'}}></div>
+                    <div className='imageList'>
+                        {myImages && myImages.map((image, i) =>
+                        {  
+
+                            return <div onClick={()=>addToYouGet(image._id)} key={i} className='imageCard' style={{backgroundImage:`url(${image.image})`}}></div>
+                        }
                         )}
                     </div>
                 </div>
             </div>
             <div className='offer dFlex flexWrap'>
                 <div className='youget dFlex flexWrap'>
-                    {offer.youget.length > 0 && offer.youget.map((nft, i) =>
-                        <div onClick={()=>returnMine(nft._id)} key={i} className='nft' style={{backgroundImage:`url(${nft.image})`, width: '100px', height: '100px', backgroundSize: 'cover', backgroundPosition:'center'}}></div>
+                    {offer.youget.length > 0 && offer.youget.map((image, i) =>
+                    {
+
+                       return <div onClick={()=>returnMine(image._id)} key={i} className='imageCard' style={{backgroundImage:`url(${image.image})`}}></div>
+                    }
                     )}
                 </div>
                 <div className='iget dFlex flexWrap'>
-                    {offer.iget.length > 0 && offer.iget.map((nft, i) =>
-                        <div onClick={()=>returnHis(nft._id)} key={i} className='nft' style={{backgroundImage:`url(${nft.image})`, width: '100px', height: '100px', backgroundSize: 'cover', backgroundPosition:'center'}}></div>
+                    {offer.iget.length > 0 && offer.iget.map((image, i) =>
+                    {
+
+                        return <div onClick={()=>returnHis(image._id)} key={i} className='imageCard' style={{backgroundImage:`url(${image.image})`}}></div>
+                    }
                     )}
                 </div>
             </div>
-            <button onClick={submitOffer}>Submit Offer</button>
+            <button className='offerButton' onClick={submitOffer}>Offer</button>
             <h1>{error}</h1>
         </div>
     );

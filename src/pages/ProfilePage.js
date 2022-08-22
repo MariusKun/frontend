@@ -3,36 +3,40 @@ import { useContext, useEffect, useState } from 'react';
 import mainContext from '../context/mainContext';
 
 const ProfilePage = () => {
-    const { login, user, setMyNFTS } = useContext(mainContext)
-    const [ nfts, setNFTS ] = useState([])
+    const { login, user, setMyImages } = useContext(mainContext)
+    const [ images, setImages ] = useState([])
     useEffect(()=>{
         const options = {
             method: 'GET',
             headers: {"content-type":"application/json"},
             credentials: 'include'
         }
-        if (user) fetch(`http://localhost:4000/nftList/${user._id}`, options)
+        if (user) fetch(`http://localhost:4000/imagesList/${user._id}`, options)
         .then(res => res.json())
         .then(data => {
-            setMyNFTS(data.nfts)
-            setNFTS(data.nfts)
+            setMyImages(data.images)
+            setImages(data.images)
         })
     }, [user])
 
+    
     return (
-        <div className='ProfilePage'>
-            <div className='info'>
+        
+        <div className='profilePage dFlex'>
+            <div className='userInfo'>
                 {user && 
                     <>
-                        <h5>id: {user._id}</h5>
-                        <h5>username: {user.username}</h5>
-                        <h5>password: {user.password}</h5>
+                        <h3>Nickname: {user.username}</h3>
+                        <h3>You own {images.length} cars:</h3>
+                 
                     </>
                 }
             </div>
-            <div className='nftList dFlex flexWrap'>
-                {nfts.length > 0 && nfts.map((nft, i) =>
-                    <div key={i} className='nft' style={{backgroundImage:`url(${nft.image})`, width: '100px', height: '100px', backgroundSize: 'cover', backgroundPosition:'center'}}></div>
+            <div className='imageContainer dFlex flexWrap'>
+                {images && images.map((image, i) =>
+                {
+                    return <div key={i} className='imageCard' style={{backgroundImage:`url(${image.image})`}}></div>
+                }
                 )}
             </div>
         </div>

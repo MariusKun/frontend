@@ -13,35 +13,233 @@
     flex: 1;
 }
 .App {
-    width: 800px;
-    margin: 0 auto;
+    display: flex;
+    width: 1200px;
+    min-height: 500px;
+    margin: 20px auto 20px 20px;
+    padding: 20px;
+    background-color: rgb(216, 216, 216);
+    border-radius: 10px;
 }
-.NavBar {
+
+
+.Navigation {
     display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 200px;
     justify-content: space-between;
+    font-family: cursive;
+    color: rgb(41, 116, 108);
+    background-color: rgb(143, 143, 143);
+    padding: 10px;
+    margin-right: 20px;
+    border-radius: 10px;
 }
-.NavBar h1 {
+.Navigation h3 {
+    color: rgb(143, 96, 156);
     cursor: pointer;
     
 }
+.Navigation h2 {
+    
+    cursor: pointer;
+    
+}
+
 .UserPage .top {
     display: flex;
+    justify-content: space-around;
 }
-.UserPage .nftList{
-    display: flex;
-    flex-wrap: wrap;
-}
+
 .UserPage .offer {
-    background-color: beige;
-    min-height: 100px;
+    background-color: rgb(210, 210, 208);
+    min-height: 150px;
 }
-.youget, .iget {
-    width: 400px;
+
+.UsersPage h2 {
+    margin-bottom: 10px;
+}
+
+.youget {
+    width: 450px;
+    margin: 5px;
+    height: 190px;
+    background-color:  rgb(161, 161, 161);
+    border-radius: 10px;
+}
+
+.iget {
+    width: 450px;
+    margin: 5px;
+    background-color: rgb(181, 164, 164);
+    border-radius: 10px;
 }
 
 .offerCard {
     border: 1px solid black;
 }
-.RequestsPage .nftList {
-    min-height: 100px;
+
+
+.imageContainer {
+    padding: 5px;
+    row-gap: 10px;
+    column-gap: 10px;
+    
 }
+
+.imageCard {
+    padding: 10px;
+    height: 180px;
+    width: 180px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+
+}
+
+.userInfo{
+    color: rgb(72, 81, 27);
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.profilePage{
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.userText{
+    cursor: pointer;
+    color: rgb(122, 117, 33);
+    margin-bottom: 10px;
+}
+
+.uploadImages button{
+    background-color: green;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+
+}
+
+.uploadImages input{
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.uploadImages h3{
+    margin: 5px;
+}
+
+.offerButton{
+    margin-top: 10px;
+    background-color: green;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.frontPage input{
+    display: flex;
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px solid rgb(168, 12, 216);
+    margin: 5px;
+    padding: 5px;
+}
+
+.frontPage button{
+    margin-top: 10px;
+    background-color: rgb(168, 12, 216);
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.register{
+
+    margin-bottom: 15px;
+}
+
+
+
+.myImageList{
+    display: flex;
+    width: 450px;
+    height: 190px;
+    background-color: rgb(161, 161, 161);
+    border-radius: 10px;
+}
+
+.imageList{
+    display: flex;
+    width: 450px;
+    height: 190px;
+    background-color: rgb(181, 164, 164);
+    border-radius: 10px;
+}
+
+.myImageList .imageCard {
+    border-radius: 10px;
+    width: 120px;
+    height: 120px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+.imageList .imageCard {
+    border-radius: 10px;
+    width: 120px;
+    height: 120px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+.iget .imageCard {
+    border-radius: 10px;
+    width: 120px;
+    height: 120px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+.iget .imageCard {
+    border-radius: 10px;
+    width: 120px;
+    height: 120px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+.youget .imageCard {
+    border-radius: 10px;
+    width: 120px;
+    height: 120px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+.youget .imageCard {
+    border-radius: 10px;
+    width: 120px;
+    height: 120px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.requestButtonA {
+    padding: 7px;
+    margin-top: 15px;
+    margin-left: 10px;
+    background-color: rgb(53, 122, 53);
+    border-radius: 5px;
+    border: 2px solid rgb(91, 90, 90);
+    
+}
+.requestButtonR {
+    padding: 7px;
+    margin-top: 15px;
+    margin-left: 10px;
+    background-color: rgb(187, 57, 57);
+    border-radius: 5px;
+    border: 2px solid rgb(91, 90, 90);
+}
+
+

@@ -12,7 +12,7 @@ const UploadPage = () => {
             body: JSON.stringify({image:input1.current.value}),
             credentials: 'include'
         }
-        fetch('http://localhost:4000/nftUpload', options)
+        fetch('http://localhost:4000/imagesUpload', options)
         .then(res => res.json())
         .then(data => {
             console.log(data)
@@ -25,9 +25,9 @@ const UploadPage = () => {
         })
     }
     return (
-        <div className='UploadPage'>
-            Upload your NFTs here:
-            <input autoFocus onKeyDown={e=> e.key==='Enter' && upload()} ref={input1} type='text' placeholder='nft url'/>
+        <div className='uploadImages'>
+            <h3>Upload your images here:</h3>
+            <input autoFocus onKeyDown={e=> e.key==='Enter' && upload()} ref={input1} type='text' placeholder='image url'/>
             <button onClick={upload} >Upload</button>
             <h1>{error}</h1>
         </div>

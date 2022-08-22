@@ -33,7 +33,7 @@ const RequestsPage = () => {
             let message = {}
             message.id = offer.madeByID
             message.message = `${offer.madeToName} has rejected your offer`
-            socket.emit('alert', message)
+            
         })
     }
     function accept(offer){
@@ -54,25 +54,25 @@ const RequestsPage = () => {
     return (
         <div className='RequestsPage'>
             {offers.map(offer=> 
-                <div key={offer._id} className='offerCard'>
+                <div key={offer._id} className='imageCard'>
                 <div className='container dFlex'>
                     <div className='requestSide flex1'>
                         <h3>{offer.madeByName} would get:</h3>
-                        <div className='nftList dFlex flexWrap'>
-                            {offer.iget.map((nft, i) =>
-                                <div key={i} className='nft ' style={{backgroundImage:`url(${nft.image})`, width: '100px', height: '100px', backgroundSize: 'cover', backgroundPosition:'center'}}></div>
+                        <div className='imageCard dFlex flexWrap'>
+                            {offer.iget.map((image, i) =>
+                                <div key={i} className='imageCard' style={{backgroundImage:`url(${image.image})`}}></div>
                             )}
                         </div>
-                        <button onClick={()=>reject(offer)} >Reject Offer</button>
+                        <button className='requestButtonR' onClick={()=>reject(offer)} >Reject offer</button>
                     </div>
                     <div className='offerSide flex1'>
                         <h3>You would get:</h3>
-                        <div className='nftList dFlex flexWrap'>
-                            {offer.youget.map((nft, i) =>
-                                <div key={i} className='nft ' style={{backgroundImage:`url(${nft.image})`, width: '100px', height: '100px', backgroundSize: 'cover', backgroundPosition:'center'}}></div>
+                        <div className='imageCard'>
+                            {offer.youget.map((image, i) =>
+                                <div key={i} className='imageCard' style={{backgroundImage:`url(${image.image})`}}></div>
                             )}
                         </div>
-                        <button onClick={()=>accept(offer)}>Accet Offer</button>
+                        <button className='requestButtonA' onClick={()=>accept(offer)}>Accept Offer</button>
                     </div>
                 </div>
                 </div>
